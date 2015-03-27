@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_basic" type="synapse/template">
+	<subComponents>
+		<component name="getSystemInformation">
+			<file>getSystemInformation.xml</file>
+			<description>get mailman system information</description>
+		</component>
+			
+	</subComponents>
+</component>

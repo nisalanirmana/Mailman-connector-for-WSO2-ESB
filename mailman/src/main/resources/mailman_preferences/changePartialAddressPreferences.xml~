@@ -1,0 +1,51 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="changePartialAddressPreferences">	
+<parameter name="email" description="a String containing the email of the user" />
+	
+<parameter name="acknowledge_posts" description="a String containing the preference attribute" />
+<parameter name="delivery_mode" description="a String containing the preference attribute" />
+<parameter name="delivery_status" description="a String containing the preference attribute"/>
+<parameter name="preferred_language" description="a String containing the preference attribute" />
+<parameter name="receive_list_copy" description="a String containing the preference attribute" />
+<parameter name="receive_own_postings" description="a String containing the preference attribute" />
+
+        <sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header/>
+					<soapenv:Body>
+                                           <changePartialAddressPreferences>                                           
+                                           <acknowledge_posts>$1</acknowledge_posts>
+                                           <delivery_mode>$2</delivery_mode>
+                                           <delivery_status>$3</delivery_status>
+                                           <preferred_language>$4</preferred_language>
+                                           <receive_list_copy>$5</receive_list_copy>
+                                           <receive_own_postings>$6</receive_own_postings>
+                                           </changePartialAddressPreferences>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+
+                       <arg evaluator="xml" expression="$func:acknowledge_posts"/>
+                       <arg evaluator="xml" expression="$func:delivery_mode"/>
+                       <arg evaluator="xml" expression="$func:delivery_status"/>
+                       <arg evaluator="xml" expression="$func:preferred_language"/>
+                       <arg evaluator="xml" expression="$func:receive_list_copy"/>
+                       <arg evaluator="xml" expression="$func:receive_own_postings"/>
+
+                       </args>
+		</payloadFactory>
+		
+		<property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+                <property name="uri.var.email" expression="$func:email" />
+                <property name="HTTP_METHOD" value="PATCH" scope="axis2" type="STRING"/>
+               <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/addresses/',$ctx:uri.var.email,'/preferences')"/>                
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class> 
+		
+	</sequence>
+
+</template>

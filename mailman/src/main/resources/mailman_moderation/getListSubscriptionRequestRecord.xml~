@@ -1,0 +1,33 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getListSubscriptionRequestRecord">	
+ <parameter name="request_id" description="a String containing the subscription request id" />
+ <parameter name="fqdn_listname" description="a String containing the list name" />
+	<sequence>
+		 <property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <getListSubscriptionRequestRecord>
+                                        <fqdn_listname>$1</fqdn_listname>                                       
+                                        </getListSubscriptionRequestRecord>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+                              <arg evaluator="xml" expression="$func:fqdn_listname"/>                               
+                        </args>
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.fqdn_listname" expression="$func:fqdn_listname" />
+                <property name="uri.var.request_id" expression="$func:request_id" />
+                <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+                
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/lists/',$ctx:uri.var.fqdn_listname,'/requests/',$ctx:uri.var.request_id)"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class> 
+				
+	</sequence>
+
+</template>

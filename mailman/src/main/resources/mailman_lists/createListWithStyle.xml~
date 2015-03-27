@@ -1,0 +1,33 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="createList">
+    <parameter name="fqdn_listname" description="a String containing the list name" />
+    <parameter name="style_name" description="a String containing the style name" />
+       	<sequence>    
+             <payloadFactory media-type="xml">
+             <format>
+                          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                          <soapenv:Header/>
+                          <soapenv:Body>
+                          <createList>
+                          <fqdn_listname>$1</fqdn_listname>
+                          <style_name>$2</style_name>
+                          </createList>
+                          </soapenv:Body>
+                          </soapenv:Envelope> 
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:fqdn_listname"/>
+                <arg evaluator="xml" expression="$func:style_name"/>            
+            </args>
+            </payloadFactory>
+                
+                <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+		
+		<call>
+			<endpoint>
+				<http method="POST"
+					uri-template="{uri.var.mailman.url}/3.0/lists" format="rest" />
+			</endpoint>
+		</call>
+	</sequence>
+</template>

@@ -1,0 +1,33 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="setListConfigurationParameter">	
+<parameter name="fqdn_listname" description="a String containing the mail list name" />
+<parameter name="configuration_parameter_name" description="a String containing the list configuration parameter name" />
+<parameter name="configuration_parameter_value" description="a String containing the list configuration parameter value" />
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<$1>$2</$1>                           
+                                        <soapenv:Body />
+				</soapenv:Envelope>
+			</format>
+			<args> 
+                        <arg evaluator="xml" expression="$func:configuration_parameter_name"/>
+                        <arg evaluator="xml" expression="$func:configuration_parameter_value"/>
+                        </args>
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.fqdn_listname" expression="$func:fqdn_listname" />
+                <property name="uri.var.configuration_parameter_name" expression="$func:configuration_parameter_name" />
+		<call>
+			<endpoint>
+				<http method="PUT"
+					uri-template="{uri.var.mailman.url}/3.0/lists/{uri.var.fqdn_listname}/config/{uri.var.configuration_parameter_name}" />
+			</endpoint>
+		</call>
+
+	</sequence>
+
+</template>

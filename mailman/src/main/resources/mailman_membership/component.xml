@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_membership" type="synapse/template">
+	<subComponents>
+		<component name="getMemberSubsciptions">
+			<file>getMemberSubsciptions.xml</file>
+			<description>get particular member subscriptions</description>
+		</component>
+                <component name="changeMemberDelivery">
+			<file>changeMemberDelivery.xml</file>
+			<description>change particular member delivery mode</description>
+		</component>
+                <component name="changeMemberDeliveryAddress">
+			<file>changeMemberDeliveryAddress.xml</file>
+			<description>change particular member delivery address</description>
+		</component>
+                <component name="findMember">
+			<file>findMember.xml</file>
+			<description>find particular member satisfy conditions</description>
+		</component>
+                <component name="getListMemberRecord">
+			<file>getListMemberRecord.xml</file>
+			<description>get member record associated with a particular list</description>
+		</component>
+                  <component name="getListMembers">
+			<file>getListMembers.xml</file>
+			<description>get  all member records associated with a particular list</description>
+		</component>
+                 <component name="getListOwners">
+			<file>getListOwners.xml</file>
+			<description>get  all list owner records associated with a particular list</description>
+		</component>
+                <component name="getMemberRecord">
+			<file>getMemberRecord.xml</file>
+			<description>get particular member record</description>
+		</component>
+                <component name="getMembers">
+			<file>getMembers.xml</file>
+			<description>get all member records</description>
+		</component>
+                <component name="joinMailList">
+			<file>joinMailList.xml</file>
+			<description>subscribe particular user with a particular mail list</description>
+		</component>
+                <component name="joinMailListWithPreferredAddress">
+			<file>joinMailListWithPreferredAddress.xml</file>
+			<description>subscribe particular user with a particular mail list with specified preffered address</description>
+		</component>
+                <component name="leaveMailList">
+			<file>leaveMailList.xml</file>
+			<description>unsubscribe particular user with a particular mail list</description>
+		</component>
+                <component name="setListRole">
+			<file>setListRole.xml</file>
+			<description>set particular member role for a particular list</description>
+		</component>
+	</subComponents>
+</component>

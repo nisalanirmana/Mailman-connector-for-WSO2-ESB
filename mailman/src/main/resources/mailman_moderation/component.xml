@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_moderation" type="synapse/template">
+	<subComponents>
+		<component name="getListHeldMessages">
+			<file>getListHeldMessages.xml</file>
+			<description>get all held messages associated with a particular list</description>
+		</component>
+                <component name="getListHeldMessageRecord">
+			<file>getListHeldMessageRecord.xml</file>
+			<description>get a single held message associated with a particular list</description>
+		</component>
+                <component name="moderateMessage">
+			<file>moderateMessage.xml</file>
+			<description>moderate message associated with a particular list</description>
+		</component>
+                <component name="getListSubscriptionRequests">
+			<file>getListSubscriptionRequests.xml</file>
+			<description>get subscription requests associated with a particular list</description>
+		</component>
+                <component name="getListSubscriptionRequestRecord">
+			<file>getListSubscriptionRequestRecord.xml</file>
+			<description>get a single subscription request associated with a particular list</description>
+		</component>
+                <component name="moderateSubscriptionRequest">
+			<file>moderateSubscriptionRequest.xml</file>
+			<description>moderate subscription request associated with a particular list</description>
+		</component>
+	</subComponents>
+</component>

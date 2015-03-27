@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/repos/wso2/!svn/ver/191359/carbon/platform/branches/turing/components/mediation/mediation-library/connectors/org.wso2.carbon.connector.jira/1.0.0/src/main/resources/jira_config
+END
+component.xml
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/repos/wso2/!svn/ver/191359/carbon/platform/branches/turing/components/mediation/mediation-library/connectors/org.wso2.carbon.connector.jira/1.0.0/src/main/resources/jira_config/component.xml
+END
+init.xml
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/repos/wso2/!svn/ver/191359/carbon/platform/branches/turing/components/mediation/mediation-library/connectors/org.wso2.carbon.connector.jira/1.0.0/src/main/resources/jira_config/init.xml
+END

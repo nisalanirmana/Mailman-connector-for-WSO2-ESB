@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+    <component name="mailman" package="org.wso2.carbon.connector" >
+         
+         <dependency component="mailman_users"/>
+         <dependency component="mailman_config"/>
+         <dependency component="mailman_preferences"/>
+         <dependency component="mailman_moderation"/>
+         <dependency component="mailman_membership"/>
+         <dependency component="mailman_lists_configuration"/>
+         <dependency component="mailman_lists"/>
+         <dependency component="mailman_domains"/>
+         <dependency component="mailman_basic"/>
+         <dependency component="mailman_addresses"/>
+         <description>Mailman-3.0.0b3 Cloud Connector for WSO2 ESB 4.8.1</description>
+    </component>
+</connector>

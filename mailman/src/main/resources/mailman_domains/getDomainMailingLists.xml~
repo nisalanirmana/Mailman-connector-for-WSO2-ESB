@@ -1,0 +1,31 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getDomainMailingLists">	
+<parameter name="mail_host" description="a String containing the mail host of domain" />
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <getDomainMailingLists>
+                                        <mail_host>$1</mail_host>
+                                        </getDomainMailingLists>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+                              <arg evaluator="xml" expression="$func:mail_host"/>         
+                        </args>
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.mail_host" expression="$func:mail_host" />
+                
+		
+                <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/domains/',$ctx:uri.var.mail_host,'/lists')"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>
+	</sequence>
+
+</template>

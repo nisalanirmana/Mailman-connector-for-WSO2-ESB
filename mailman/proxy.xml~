@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="mailman"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+   <target>
+      <inSequence>
+         <property name="application" expression="json-eval($.application)"/>
+         <switch source="get-property('application')">
+            <case regex="mailman">
+               <property name="operation" expression="json-eval($.operation)"/>
+               <switch source="get-property('operation')">
+                  <case regex="getUsers" configKey="mailmancon">
+                     <property name="NO_ENTITY_BODY" scope="axis2" action="remove"/>
+                     <log level="full"/>
+                     <mailman_connector.getUsers/>
+                     <property name="messageType" value="application/json" scope="axis2"/>
+                     <respond/>
+                  </case>
+                  <case regex="createUser">
+                     <property name="NO_ENTITY_BODY" scope="axis2" action="remove"/>
+                     <property name="password" expression="json-eval($.content.password)"/>
+                     <property name="email" expression="json-eval($.content.email)"/>
+                     <property name="display_name" expression="json-eval($.content.display_name)"/>
+                     <log level="full"/>
+                     <mailman_connector.createUser configKey="mailmancon">
+                        <password>{get-property('password')}</password>
+                        <email>{get-property('email')}</email>
+                        <display_name>{get-property('display_name')}</display_name>
+                     </mailman_connector.createUser>
+                     <property name="messageType" value="application/json" scope="axis2"/>
+                     <respond/>
+                  </case>  
+                  <case regex="getLists" configKey="mailmancon">
+                     <property name="NO_ENTITY_BODY" scope="axis2" action="remove"/>
+                     <log level="full"/>
+                     <mailman_connector.getLists/>
+                     <property name="messageType" value="application/json" scope="axis2"/>
+                     <respond/>
+                  </case>
+                  <case regex="createList">
+                     <property name="NO_ENTITY_BODY" scope="axis2" action="remove"/>
+                     <property name="fqdn_listname" expression="json-eval($.content.fqdn_listname)"/>
+                     <property name="style_name" expression="json-eval($.content.style_name)"/>                     
+                     <log level="full"/>
+                     <mailman_connector.createList configKey="mailmancon">
+                        <fqdn_listname>{get-property('fqdn_listname')}</fqdn_listname>
+                        <style_name>{get-property('email')}</style_name>                        
+                     </mailman_connector.createList>
+                     <property name="messageType" value="application/json" scope="axis2"/>
+                     <respond/>
+                  </case>                              
+               </switch>
+            </case>
+         </switch>
+      </inSequence>
+      <outSequence/>
+   </target>
+   <description/>
+</proxy>

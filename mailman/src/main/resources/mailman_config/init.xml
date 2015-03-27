@@ -1,0 +1,21 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="init">
+
+	<parameter name="username" description="username of the user used to log in to Mailman." />
+	<parameter name="password"
+		description="password of the user used to log in to Mailman." />
+	<parameter name="uri"
+		description="URI of the Mailman instance." />
+
+
+	<sequence>
+		<property name="mailman.username" expression="$func:username" />
+		<property name="mailman.password" expression="$func:password" />
+		<property name="mailman.for.auth"
+			expression="fn:concat($ctx:mailman.username,':',$ctx:mailman.password)" />
+		<property name="uri.var.mailman.url" expression="$func:uri" />
+		<property name="Authorization"
+			expression="fn:concat('Basic ', base64Encode($ctx:mailman.for.auth))"
+			scope="transport" />
+	
+	</sequence>
+</template>

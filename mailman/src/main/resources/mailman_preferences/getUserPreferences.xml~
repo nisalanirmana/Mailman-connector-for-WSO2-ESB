@@ -1,0 +1,30 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getUserPreferences">	
+<parameter name="user_id" description="a String containing the user id" />
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		<payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <getUserPreferences>
+                                        <user_id>$1</user_id>
+                                        </getUserPreferences>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+                              <arg evaluator="xml" expression="$func:user_id"/>         
+                        </args>
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.user_id" expression="$func:user_id" />
+                <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/users/',$ctx:uri.var.user_id,'/preferences')"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>
+		
+	</sequence>
+
+</template>

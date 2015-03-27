@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_users" type="synapse/template">
+	<subComponents>
+		<component name="createUser">
+			<file>createUser.xml</file>
+			<description>create a mailman user</description>
+		</component>
+		<component name="deleteUser">
+			<file>deleteUser.xml</file>
+			<description>deleter a mailman user</description>
+		</component>
+	        <component name="getUsers">
+			<file>getUsers.xml</file>
+			<description>get mailman user list</description>
+		</component>
+                <component name="getUserAddressesNamespace">
+			<file>getUserAddressesNamespace.xml</file>
+			<description>get all addresses space associated for a particular mailman user</description>
+		</component>
+                <component name="getUserRecord">
+			<file>getUserRecord.xml</file>
+			<description>get a user record of a particular user</description>
+		</component>
+                <component name="updateFullUserRecord">
+			<file>updateFullUserRecord.xml</file>
+			<description>update cleartext password **and** display name of a particular user record</description>
+		</component>
+                <component name="updatePartialUserRecord">
+			<file>updateFullUserRecord.xml</file>
+			<description>update cleartext password **or** display name of a particular user record</description>
+		</component> 
+                <component name="verifyUserPassword">
+			<file>verifyUserPassword.xml</file>
+			<description>verify cleartext user password</description>
+		</component> 
+                
+		
+	</subComponents>
+</component>

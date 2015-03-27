@@ -1,0 +1,119 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="changeFullListConfiguration">
+
+<parameter name="fqdn_listname" description="a String containing the mail list name" />  
+ 
+<parameter name="acceptable_aliases" description="a String containing the configuration attribute"/>   
+<parameter name="admin_immed_notify" description="a String containing the configuration attribute"/>    
+<parameter name="admin_notify_mchanges" description="a String containing the configuration attribute"/> 
+<parameter name="administrivia" description="a String containing the configuration attribute"/> 
+<parameter name="advertised" description="a String containing the configuration attribute"/> 
+<parameter name="anonymous_list" description="a String containing the configuration attribute"/> 
+<parameter name="archive_policy" description="a String containing the configuration attribute"/> 
+<parameter name="autorespond_owner" description="a String containing the configuration attribute"/> 
+<parameter name="autorespond_postings" description="a String containing the configuration attribute"/> 
+<parameter name="autorespond_requests" description="a String containing the configuration attribute"/> 
+<parameter name="autoresponse_grace_period" description="a String containing the configuration attribute"/> 
+<parameter name="autoresponse_owner_text" description="a String containing the configuration attribute"/> 
+<parameter name="autoresponse_postings_text" description="a String containing the configuration attribute"/> 
+<parameter name="autoresponse_request_text" description="a String containing the configuration attribute"/> 
+<parameter name="display_name" description="a String containing the configuration attribute"/> 
+<parameter name="description" description="a String containing the configuration attribute"/> 
+<parameter name="include_rfc2369_headers" description="a String containing the configuration attribute"/> 
+<parameter name="allow_list_posts" description="a String containing the configuration attribute"/> 
+<parameter name="digest_size_threshold" description="a String containing the configuration attribute"/> 
+<parameter name="posting_pipeline" description="a String containing the configuration attribute"/> 
+<parameter name="filter_content" description="a String containing the configuration attribute"/> 
+<parameter name="convert_html_to_plaintext" description="a String containing the configuration attribute"/> 
+<parameter name="collapse_alternatives" description="a String containing the configuration attribute"/> 
+<parameter name="reply_goes_to_list" description="a String containing the configuration attribute"/>    
+<parameter name="send_welcome_message" description="a String containing the configuration attribute"/> 
+<parameter name="subject_prefix" description="a String containing the configuration attribute"/> 
+<parameter name="welcome_message_uri" description="a String containing the configuration attribute"/>
+<parameter name="default_member_action" description="a String containing the configuration attribute"/> 
+<parameter name="default_nonmember_action" description="a String containing the configuration attribute"/>     
+
+  
+    	<sequence>    
+             
+             <payloadFactory media-type="xml">
+             <format>
+                          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                          <soapenv:Header/>
+                          <soapenv:Body>
+                          <changeFullListConfiguration>
+                          <acceptable_aliases>$1</acceptable_aliases> 
+                          <admin_immed_notify>$2</admin_immed_notify>   
+                          <admin_notify_mchanges>$3</admin_notify_mchanges>
+                          <administrivia>$4</administrivia> 
+                          <advertised>$5</advertised> 
+                          <anonymous_list>$6</anonymous_list>
+                          <archive_policy>$7</archive_policy> 
+                          <autorespond_owner>$8</autorespond_owner> 
+                          <autorespond_postings>$9</autorespond_postings> 
+                          <autorespond_requests>$10</autorespond_requests> 
+                          <autoresponse_grace_period>$11</autoresponse_grace_period>
+                          <autoresponse_owner_text>$12</autoresponse_owner_text>
+                          <autoresponse_postings_text>$13</autoresponse_postings_text> 
+                          <autoresponse_request_text>$14</autoresponse_request_text> 
+                          <display_name>$15</display_name> 
+                          <description>$16</description> 
+                          <include_rfc2369_headers>$17</include_rfc2369_headers> 
+                          <allow_list_posts>$18</allow_list_posts> 
+                          <digest_size_threshold>$19</digest_size_threshold> 
+                          <posting_pipeline>$20</posting_pipeline> 
+                          <filter_content>$21</filter_content> 
+                          <convert_html_to_plaintext>$22</convert_html_to_plaintext> 
+                          <collapse_alternatives>$23</collapse_alternatives>   
+                          <reply_goes_to_list>$24</reply_goes_to_list> 
+                          <send_welcome_message>$25</send_welcome_message> 
+                          <subject_prefix>$26</subject_prefix> 
+                          <welcome_message_uri>$27</welcome_message_uri>  
+                          <default_member_action>$28</default_member_action> 
+                          <default_nonmember_action>$29</default_nonmember_action>                                                     
+                          </changeFullListConfiguration>                         
+                          </soapenv:Body>
+                          </soapenv:Envelope> 
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:acceptable_aliases"/>
+                <arg evaluator="xml" expression="$func:admin_immed_notify"/>
+                <arg evaluator="xml" expression="$func:admin_notify_mchanges"/>
+                <arg evaluator="xml" expression="$func:administrivia"/>
+                <arg evaluator="xml" expression="$func:advertised"/>
+                <arg evaluator="xml" expression="$func:anonymous_list"/>
+                <arg evaluator="xml" expression="$func:archive_policy"/>
+                <arg evaluator="xml" expression="$func:autorespond_owner"/>
+                <arg evaluator="xml" expression="$func:autorespond_postings"/>
+                <arg evaluator="xml" expression="$func:autorespond_requests"/>
+                <arg evaluator="xml" expression="$func:autoresponse_grace_period"/>
+                <arg evaluator="xml" expression="$func:autoresponse_owner_text"/>
+                <arg evaluator="xml" expression="$func:autoresponse_postings_text"/>
+                <arg evaluator="xml" expression="$func:autoresponse_request_text"/>
+                <arg evaluator="xml" expression="$func:display_name"/>
+                <arg evaluator="xml" expression="$func:description"/>
+                <arg evaluator="xml" expression="$func:include_rfc2369_headers"/>
+                <arg evaluator="xml" expression="$func:allow_list_posts"/>
+                <arg evaluator="xml" expression="$func:digest_size_threshold"/>
+                <arg evaluator="xml" expression="$func:posting_pipeline"/>
+                <arg evaluator="xml" expression="$func:filter_content"/>
+                <arg evaluator="xml" expression="$func:convert_html_to_plaintext"/>
+                <arg evaluator="xml" expression="$func:collapse_alternatives"/>
+                <arg evaluator="xml" expression="$func:reply_goes_to_list"/>
+                <arg evaluator="xml" expression="$func:send_welcome_message"/>
+                <arg evaluator="xml" expression="$func:subject_prefix"/>
+                <arg evaluator="xml" expression="$func:welcome_message_uri"/>
+                <arg evaluator="xml" expression="$func:default_member_action"/>
+                <arg evaluator="xml" expression="$func:default_nonmember_action"/> 
+             </args>
+            </payloadFactory>
+                
+                <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+		<property name="uri.var.fqdn_listname" expression="$func:fqdn_listname" />
+                <property name="HTTP_METHOD" value="PUT" scope="axis2" type="STRING"/>
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/lists/',$ctx:uri.var.fqdn_listname,'/config')"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>
+		
+           </sequence>
+</template>

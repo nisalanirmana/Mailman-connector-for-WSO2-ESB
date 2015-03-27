@@ -1,0 +1,26 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getSystemPreferences">	
+ 
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <getMemberPreferences/>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args />
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/system/preferences')"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>		
+		
+
+	</sequence>
+
+</template>

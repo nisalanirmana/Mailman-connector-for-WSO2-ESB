@@ -1,0 +1,36 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="moderateMessage">	
+ <parameter name="request_id" description="a String containing the message request id" />
+ <parameter name="fqdn_listname" description="a String containing the list name" />
+ <parameter name="action" description="a String containing the moderate action" />
+
+	<sequence>
+            <property name="Accept-Encoding" action="remove" scope="transport" />
+            <payloadFactory media-type="xml">
+            <format>
+                          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                          <soapenv:Header/>
+                          <soapenv:Body>
+                          <moderateMessage>
+                          <action>$1</action>                         
+                          </moderateMessage>
+                          </soapenv:Body>
+                          </soapenv:Envelope>               
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:action"/>             
+            </args>
+            </payloadFactory>
+		
+		<property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+                <property name="uri.var.fqdn_listname" expression="$func:fqdn_listname" />
+                <property name="uri.var.request_id" expression="$func:request_id" />
+                <property name="HTTP_METHOD" value="POST" scope="axis2" type="STRING"/>
+                
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/lists/',$ctx:uri.var.fqdn_listname,'/held/',$ctx:uri.var.request_id)"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class> 
+		
+	</sequence>
+
+</template>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_lists_configuration" type="synapse/template">
+	<subComponents>
+		<component name="getListConfiguration">
+			<file>getListConfiguration.xml</file>
+			<description>get configuration parameters associated with a particular list</description>
+		</component>
+		<component name="getListConfigurationParameter">
+			<file>getListConfigurationParameter.xml</file>
+			<description>get a configuration parameter with a particular list</description>
+		</component> 
+                <component name="setListConfigurationParameter">
+			<file>setListConfigurationParameter.xml</file>
+			<description>set a configuration parameter with a particular list</description>
+		</component>
+                <component name="changeFullListConfiguration">
+			<file>changeFullListConfiguration.xml</file>
+			<description>change all configuration parameters associated with a particular list</description>
+		</component>
+                <component name="changePartialListConfiguration">
+			<file>changePartialListConfiguration.xml</file>
+			<description>change partial configuration parameters associated with a particular list</description>
+		</component> 
+	</subComponents>
+</component>

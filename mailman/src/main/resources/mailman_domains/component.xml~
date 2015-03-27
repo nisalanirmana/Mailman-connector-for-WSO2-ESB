@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_domains" type="synapse/template">
+	<subComponents>
+		<component name="getDomains">
+			<file>getDomains.xml</file>
+			<description>get all mailman domain space</description>
+		</component>
+		<component name="getDomainRecord">
+			<file>getDomainRecord.xml</file>
+			<description>get a mailman particular domain record</description>
+		</component>
+	        <component name="getDomainMailingLists">
+			<file>getDomainMailingLists.xml</file>
+			<description>get all mailing lists associated for a particular mailman domain</description>
+		</component>
+                <component name="createDomain">
+			<file>createDomain.xml</file>
+			<description>create a new domain</description>
+		</component>
+
+                 <component name="deleteDomain">
+			<file>deleteDomain.xml</file>
+			<description>delete a new domain</description>
+		</component>                    
+
+	</subComponents>
+</component>

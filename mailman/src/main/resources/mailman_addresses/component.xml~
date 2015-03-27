@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_addresses" type="synapse/template">
+	<subComponents>
+		<component name="getUserAddresses">
+			<file>getUserAddresses.xml</file>
+			<description>get all mailman users addresses space</description>
+		</component>
+		<component name="getUserAddressRecord">
+			<file>getUserAddressRecord.xml</file>
+			<description>get a mailman user associated address</description>
+		</component>
+	        <component name="getUserAddressesNamespace">
+			<file>getUserAddressesNamespace.xml</file>
+			<description>get all addresses space associated for a particular mailman user</description>
+		</component>
+                <component name="getUserAddressMemberships">
+			<file>getUserAddressMemberships.xml</file>
+			<description>get all the mailing lists subscribed to a particular address</description>
+		</component>
+
+                 <component name="verifyUserAddress">
+			<file>verifyUserAddress.xml</file>
+			<description>verify user address</description>
+		</component>
+                <component name="unverifyUserAddress">
+			<file>unverifyUserAddress.xml</file>
+			<description>unverify user address</description>
+		</component>
+
+                
+
+	</subComponents>
+</component>

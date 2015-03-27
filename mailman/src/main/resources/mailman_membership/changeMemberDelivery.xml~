@@ -1,0 +1,34 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="changeMemberDelivery">	
+<parameter name="member_id" description="a String containing the member id" />
+<parameter name="delivery_mode" description="a String containing the delivery mode" />
+	<sequence>
+	<property name="Accept-Encoding" action="remove" scope="transport" />
+        <payloadFactory media-type="xml">
+            <format>
+                          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                          <soapenv:Header/>
+                          <soapenv:Body>
+                          <changeMemberDelivery>
+                          <delivery_mode>$1</delivery_mode>
+                          </changeMemberDelivery>
+                          </soapenv:Body>
+                          </soapenv:Envelope>               
+            </format>
+            <args>
+                
+                <arg evaluator="xml" expression="$func:delivery_mode"/>
+            </args>
+            </payloadFactory>
+		
+		<property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+                <property name="uri.var.member_id" expression="$func:member_id" />
+                <property name="HTTP_METHOD" value="PATCH" scope="axis2" type="STRING"/>
+                
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/members/',$ctx:uri.var.member_id)"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class> 
+		
+	</sequence>
+
+</template>

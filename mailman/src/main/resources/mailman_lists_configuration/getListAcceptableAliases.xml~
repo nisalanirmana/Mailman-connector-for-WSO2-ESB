@@ -1,0 +1,27 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getListAcceptableAliases">	
+<parameter name="fqdn_listname" description="a String containing the mail list name" />
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body />
+				</soapenv:Envelope>
+			</format>
+			<args />
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.fqdn_listname" expression="$func:fqdn_listname" />
+                
+		<call>
+			<endpoint>
+				<http method="GET"
+					uri-template="{uri.var.mailman.url}/3.0/lists/{uri.var.fqdn_listname}/config/acceptable_aliases" />
+			</endpoint>
+		</call>
+
+	</sequence>
+
+</template>

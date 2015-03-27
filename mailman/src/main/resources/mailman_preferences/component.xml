@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_preferences" type="synapse/template">
+	<subComponents>
+		<component name="changeFullAddressPreferences">
+			<file>changeFullAddressPreferences.xml</file>
+			<description>change all address preferences attributes</description>
+		</component>
+		<component name="changeFullUserPreferences">
+			<file>changeFullUserPreferences.xml</file>
+			<description>change all user preferences attributes</description>
+		</component>
+                <component name="changeFullMemberPreferences">
+			<file>changeFullMemberPreferences.xml</file>
+			<description>change all member preferences attributes</description>
+		</component>
+                <component name="changePartialAddressPreferences">
+			<file>changePartialAddressPreferences.xml</file>
+			<description>change partial address preferences attributes</description>
+		</component>
+		<component name="changePartialUserPreferences">
+			<file>changePartialUserPreferences.xml</file>
+			<description>change partial user preferences attributes</description>
+		</component>
+                <component name="changePartialMemberPreferences">
+			<file>changePartialMemberPreferences.xml</file>
+			<description>change partial member preferences attributes</description>
+		</component>
+                <component name="deleteAddressPreferences">
+			<file>deleteAddressPreferences.xml</file>
+			<description>delete all address preferences attributes</description>
+		</component>
+                 <component name="deleteUserPreferences">
+			<file>deleteUserPreferences.xml</file>
+			<description>delete all user preferences attributes</description>
+		</component>
+
+                 <component name="deleteMemberPreferences">
+			<file>deleteMemberPreferences.xml</file>
+			<description>delete all member preferences attributes</description>
+		</component>
+
+                <component name="getAddressPreferences">
+			<file>getAddressPreferences.xml</file>
+			<description>get all address preferences attributes</description>
+		</component>
+                 <component name="getUserPreferences">
+			<file>getUserPreferences.xml</file>
+			<description>get all user preferences attributes</description>
+		</component>
+                 <component name="getMemberPreferences">
+			<file>getMemberPreferences.xml</file>
+			<description>get all member preferences attributes</description>
+		</component>
+                 <component name="getSystemPreferences">
+			<file>getSystemPreferences.xml</file>
+			<description>get system preferences attributes</description>
+		</component>
+                 <component name="getCombinedMemberPreferences">
+			<file>getCombinedMemberPreferences.xml</file>
+			<description>get combined member preferences attributes</description>
+		</component>
+                
+
+	</subComponents>
+</component>

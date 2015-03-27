@@ -1,0 +1,32 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="deleteUser">
+
+	<parameter name="email" description="a String containing email of the user" />
+	
+	<sequence>
+		<property name="uri.var.email" expression="$func:email" />
+		<payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <deleteUser>
+                                        <email>$1</email>
+                                        </deleteUser>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+                              <arg evaluator="xml" expression="$func:email"/>         
+                        </args>
+		</payloadFactory>
+		<property name="messageType" value="application/json" scope="axis2" />
+		<property name="HTTP_METHOD" value="DELETE" scope="axis2" type="STRING"/>             
+
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/users/',$ctx:uri.var.email)"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>
+		
+
+	</sequence>
+
+</template>

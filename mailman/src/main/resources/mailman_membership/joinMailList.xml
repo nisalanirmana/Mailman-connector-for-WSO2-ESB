@@ -1,0 +1,39 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="joinMailList">
+    <parameter name="list_id" description="a String containing the mail list id" />
+    <parameter name="subscriber" description="a String containing the user email" />
+    <parameter name="display_name" description="a String containing the user display name" />
+    <parameter name="delivery_mode" description="a String containing the delivery mode" />
+
+	<sequence>    
+            <payloadFactory media-type="xml">
+            <format>
+                          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                          <soapenv:Header/>
+                          <soapenv:Body>
+                          <joinMailList>
+                          <list_id>$1</list_id>
+                          <subscriber>$2</subscriber>
+                          <display_name>$3</display_name>
+                          <delivery_mode>$4</delivery_mode>
+                          </joinMailList>
+                          </soapenv:Body>
+                          </soapenv:Envelope>               
+            </format>
+            <args>
+                <arg evaluator="xml" expression="$func:list_id"/>
+                <arg evaluator="xml" expression="$func:subscriber"/>
+                <arg evaluator="xml" expression="$func:display_name"/>
+                <arg evaluator="xml" expression="$func:delivery_mode"/>
+            </args>
+            </payloadFactory>
+                
+                <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>  
+                <property name="messageType" scope="axis2" value="application/x-www-form-urlencoded"/>
+		<property name="HTTP_METHOD" value="POST" scope="axis2" type="STRING"/>
+                
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/members')"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class> 
+		
+	</sequence>
+</template>

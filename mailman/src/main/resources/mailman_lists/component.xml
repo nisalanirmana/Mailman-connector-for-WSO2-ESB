@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="mailman_lists" type="synapse/template">
+	<subComponents>
+		<component name="createList">
+			<file>createList.xml</file>
+			<description>create a new mail list with default style</description>
+		</component>
+		<component name="deleteList">
+			<file>deleteList.xml</file>
+			<description>delete a mail list</description>
+		</component>
+                <component name="getDomainLists">
+			<file>getDomainLists.xml</file>
+			<description>get all mail lists associated with a particular domain</description>
+		</component>
+
+                 <component name="getListRecord">
+			<file>getListRecord.xml</file>
+			<description>get a particular mail list</description>
+		</component>                    
+                <component name="getLists">
+			<file>getLists.xml</file>
+			<description>get all mail list associated with all domains</description>
+		</component>
+
+                 <component name="getListStyles">
+			<file>getListStyles.xml</file>
+			<description>get available list styles</description>
+		</component>     
+	</subComponents>
+</component>

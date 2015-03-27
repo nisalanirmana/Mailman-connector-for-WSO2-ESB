@@ -1,0 +1,30 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="getListRecord">	
+<parameter name="fqdn_listnameOrlist_id" description="a String containing the mail list name or list id" />
+	<sequence>
+		<property name="Accept-Encoding" action="remove" scope="transport" />
+		 <payloadFactory media-type="xml">
+			<format>
+				<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+					<soapenv:Header />
+					<soapenv:Body>
+                                        <getListRecord>
+                                        <fqdn_listnameOrlist_id>$1</fqdn_listnameOrlist_id>
+                                        </getListRecord>
+                                        </soapenv:Body>
+				</soapenv:Envelope>
+			</format>
+			<args>
+                              <arg evaluator="xml" expression="$func:fqdn_listnameOrlist_id"/>         
+                        </args>
+		</payloadFactory>
+		
+		<property name="messageType" value="application/json" scope="axis2" />
+                <property name="uri.var.fqdn_listnameOrlist_id" expression="$func:fqdn_listnameOrlist_id" />
+                <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+                <property name="serviceURL" expression="fn:concat($ctx:uri.var.mailman.url,'/3.0/lists/',$ctx:uri.var.fqdn_listnameOrlist_id)"/>
+                <class name="org.wso2.esb.mediators.MailmanMediator">                          
+                </class>
+		
+	</sequence>
+
+</template>
